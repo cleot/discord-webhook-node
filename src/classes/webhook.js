@@ -66,7 +66,7 @@ module.exports = class Webhook {
 
                 setTimeout(() => sendWebhook(this.hookURL, endPayload), waitUntil);
             }
-            else if (res.status != 204){
+            else if (res.statusCode !== 204 && res.statusCode !== 200) {
                 throw new Error(`Error sending webhook: ${res.status} status code. Response: ${await res.text()}`);
             };
         }
